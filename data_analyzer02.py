@@ -2,7 +2,8 @@ import pandas as pd
 import numpy as np
 
 #Carga de la tabla 1.
-df_book_landmarks=pd.read_csv('Landmarks InOut.csv')
+table01=input("Digita el nombre de la tabla 1: ")
+df_book_landmarks=pd.read_csv(table01)
 df_book_landmarks.info()
 
 #Carga de la tabla 2.
