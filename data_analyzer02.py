@@ -7,6 +7,7 @@ df_book_landmarks=pd.read_csv(table01)
 df_book_landmarks.info()
 
 #Carga de la tabla 2.
+table02=input("Digita el nombre de la tabla 2: ")
 df_book_geofences=pd.read_csv('Geofences InOut Report.csv')
 df_book_geofences.info()
 
