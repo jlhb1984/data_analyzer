@@ -16,7 +16,8 @@ landmarks=df_book_landmarks.loc[:,table01_column]
 landmarks.info()
 print(landmarks)
 
-geofences=df_book_geofences.loc[:,'GeofenceName']
+table02_column=input("Digita el nombre de la columna de la tabla 2: ")
+geofences=df_book_geofences.loc[:,table02_column]
 geofences.info()
 print(geofences)
 
