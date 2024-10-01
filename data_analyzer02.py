@@ -11,7 +11,8 @@ table02=input("Digita el nombre de la tabla 2: ")
 df_book_geofences=pd.read_csv('Geofences InOut Report.csv')
 df_book_geofences.info()
 
-landmarks=df_book_landmarks.loc[:,'ContactName']
+table01_column=input("Digita el nombre de la columna de la tabla 1: ")
+landmarks=df_book_landmarks.loc[:,table01_column]
 landmarks.info()
 print(landmarks)
 
