@@ -3,9 +3,10 @@ import numpy as np
 from tables_comparator import Tables_comparator
 from data_analyzer import Data_analyzer
 from units_report import Units_report
+from tables_merger import Tables_merger
 
 print("data_analyzer.")
-option=input("1. Data_analyzer01.\n2. Tables comparator.\n3. Units report. \n4. Salir. \n")
+option=input("1. Data_analyzer01.\n2. Tables comparator.\n3. Units report. \n4. Merger. \n5. Salir. \n")
 
 while option!=4:
     
@@ -42,10 +43,15 @@ while option!=4:
     elif option=='3':
         #Carga de la tabla. Customer-Units.csv
         table_name=input("Digita el nombre de la tabla: ")
-        Units_report.create_report(table_name)       
+        Units_report.create_report(table_name)
 
+    elif option=='4':
+        #carga de las tablas a fusionar.
+        table_numbers=int(input("Digita el número de tablas: "))
+        Tables_merger.merger()
+        
     elif option=='4':
         print("Saliendo")
         break
     
-    option=input("\n1. Data_analyzer01.\n2. Tables comparator.\n3. Units report. \n4. Salir. \n")
+    option=input("1. Data_analyzer01.\n2. Tables comparator.\n3. Units report. \n4. Merger. \n5. Salir. \n")
