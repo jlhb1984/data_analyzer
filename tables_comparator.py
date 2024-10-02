@@ -17,5 +17,5 @@ class Tables_comparator:
             for j in range(0,total_landmarks):
                 if geofences.iloc[i]==landmarks.iloc[j]:
                     print("\ncdz")
-                    print("Se encontró geofence con igual nombre de landmark")
+                    print("Se encontró geofence y landmark con el mismo nombre:")
                     print("Geofence número: ",i,"con nombre: ",geofences.iloc[i],". ","Landmark número: ",j,"con nombre: ",landmarks.iloc[j],".")

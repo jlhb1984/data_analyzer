@@ -38,7 +38,7 @@ class Data_analyzer:
         #print("Total de registros: ",landmarks.count())
 
         #Creo la lista de geofences:
-        df_book_geofences=pd.read_csv('/home/jose/git/tso/Colab/Geofences InOut Report.csv')
+        df_book_geofences=pd.read_csv('Geofences InOut Report.csv')
         df_book_geofences_GeofenceName=df_book_geofences['GeofenceName']
         df_book_geofences_GeofenceName.drop_duplicates(inplace=True)
         #print(df_book_geofences_GeofenceName.head(2))
