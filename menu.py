@@ -8,7 +8,7 @@ from tables_merger import Tables_merger
 print("data_analyzer.")
 option=input("1. Data_analyzer01.\n2. Tables comparator.\n3. Units report. \n4. Merger. \n5. Salir. \n")
 
-while option!=4:
+while option!='5':
     
     if option=='1':
         number_plate=input("Digite la placa del vehículo en mayúscula: ")
@@ -47,10 +47,10 @@ while option!=4:
 
     elif option=='4':
         #carga de las tablas a fusionar.
-        table_numbers=int(input("Digita el número de tablas: "))
-        Tables_merger.merger()
+        number_of_tables=int(input("Digita el número de tablas: "))
+        Tables_merger.merger(number_of_tables)
         
-    elif option=='4':
+    elif option=='5':
         print("Saliendo")
         break
     
