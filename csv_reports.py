@@ -1,7 +1,7 @@
 import pandas as pd
 
-table_name=input("\nDigita el nombre de la tabla 1:")
-df=pd.read_csv(table_name)
+#table_name=input("\nDigita el nombre de la tabla 1:")
+#df=pd.read_csv(table_name)
 
 def csv_reports(df):
        df_unit_types=df[['Unit Type','IMEI','Company','Phone Number','Last Event Date']]

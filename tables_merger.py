@@ -6,7 +6,7 @@ class Tables_merger:
     def __init__(self,number_of_tables):
         self.number_of_tables=number_of_tables
             
-    def merger(number_of_tables):
+    def merger(number_of_tables):       
                
         if number_of_tables==1:
             table_name=input("\nDigita el nombre de la tabla 1:")
@@ -14,6 +14,8 @@ class Tables_merger:
             df_unit_types=df[['Unit Type','IMEI','Company','Phone Number','Last Event Date']]
             print(df_unit_types)
 
+            Tables_merger.csv_reports(df_unit_types)
+            """
             exp_option=input("Desea generar un archivo en formato csv?\nS/N\n")
             if (exp_option=="S"):
                 df_unit_types.to_csv('Unit_searched_report_units.csv')
@@ -29,6 +31,7 @@ class Tables_merger:
             exp_option=input("Desea generar un archivo en formato csv?\nS/N\n")
             if (exp_option=="S"):
                 filter_df.to_csv('Unit_searched_report_units.csv')            
+            """
         
         elif number_of_tables>1:
             table_name=input("\nDigita el nombre de la tabla 1:")
@@ -55,8 +58,10 @@ class Tables_merger:
                 print("\nUnite types after concat:")
                 print("\n")
                 print(df_unit_types.info()) 
-                print(df_unit_types)
+                #print(df_unit_types)
             
+            Tables_merger.csv_reports(df_unit_types)
+            """
             exp_option=input("Desea generar un reporte en formato csv?\nS/N\n")
             if (exp_option=="S"):
                 df_unit_types.to_csv('Report_units.csv')
@@ -73,5 +78,21 @@ class Tables_merger:
             exp_option=input("Desea generar un archivo en formato csv?\nS/N\n")
             if (exp_option=="S"):
                 filter_df.to_csv('Unit_searched_report_units.csv')
+            """
 
-                #void=csv_reports(filter_df)
+    def csv_reports(df):       
+       df_unit_types=df[['Unit Type','IMEI','Company','Phone Number','Last Event Date']]
+       print(df_unit_types)
+       exp_option=input("Desea generar un archivo en formato csv?\nS/N\n")
+       if (exp_option=="S"):
+            df_unit_types.to_csv('Unit_searched_report_units.csv')
+       look_option=input("Desea buscar una unidad:\nS/N\n")
+       while look_option!='N':
+                look_word=input("Digita la unidad a buscar: ")
+                filter_df=df_unit_types[df_unit_types['Unit Type'].str.contains(look_word)]
+                print("Report of units "+look_word+":")
+                print(filter_df)
+                look_option=input("Desea buscar una unidad:\nS/N\n")
+       exp_option=input("Desea generar un archivo en formato csv?\nS/N\n")
+       if (exp_option=="S"):
+                filter_df.to_csv('Unit_searched_report_units.csv')  
