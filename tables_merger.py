@@ -13,7 +13,7 @@ class Tables_merger:
             df=pd.read_csv(table_name)
             print("Información del dataframe: ")
             print(df.info())         
-            df_unit_types=df[['Unit Type','IMEI','Company','Phone Number','Last Event Date']]
+            df_unit_types=df[['Unit Type','IMEI','Company','Phone Number','Last Event Date','Dealer']]
             print(df_unit_types)
 
             Tables_merger.csv_reports(df_unit_types) 
@@ -23,7 +23,7 @@ class Tables_merger:
             df=pd.read_csv(table_name)
             print("Información del dataframe: ")
             print(df.info())
-            df_unit_types=df[['Unit Type','IMEI','Company','Phone Number','Last Event Date']]
+            df_unit_types=df[['Unit Type','IMEI','Company','Phone Number','Last Event Date','Dealer']]
                                     
             for i in range(1,number_of_tables):
                 #UTS Sistemas Kalo MX.csv
@@ -34,7 +34,7 @@ class Tables_merger:
                 #TSO Peru - FG SATELITAL.csv
                 table_name=input("\nDigita el nombre de la tabla:")
                 df_aux=pd.read_csv(table_name)
-                df_aux_unit_types=df_aux[['Unit Type','IMEI','Company','Phone Number','Last Event Date']]
+                df_aux_unit_types=df_aux[['Unit Type','IMEI','Company','Phone Number','Last Event Date','Dealer']]
                 print("\nUnite types before concat:")
                 print("\n")
                 print(df_unit_types.info())                
@@ -46,7 +46,7 @@ class Tables_merger:
             Tables_merger.csv_reports(df_unit_types)           
 
     def csv_reports(df):       
-       df_unit_types=df[['Unit Type','IMEI','Company','Phone Number','Last Event Date']]
+       df_unit_types=df[['Unit Type','IMEI','Company','Phone Number','Last Event Date','Dealer']]
        print(df_unit_types)
        exp_option=input("Desea generar un reporte en formato csv?\nS/N\n")
        if (exp_option=="S"):
