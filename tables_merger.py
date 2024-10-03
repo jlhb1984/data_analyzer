@@ -11,15 +11,31 @@ class Tables_merger:
         if number_of_tables==1:
             table_name=input("\nDigita el nombre de la tabla 1:")
             df=pd.read_csv(table_name)          
-            df_unit_types=df[['Unit Type','IMEI','Company']]
-            print(df_unit_types)            
+            df_unit_types=df[['Unit Type','IMEI','Company','Phone Number','Last Event Date']]
+            print(df_unit_types)
+
+            exp_option=input("Desea generar un archivo en formato csv?\nS/N\n")
+            if (exp_option=="S"):
+                df_unit_types.to_csv('Unit_searched_report_units.csv')
+            
+            look_option=input("Desea buscar una unidad:\nS/N\n")
+            while look_option!='N':
+                look_word=input("Digita la unidad a buscar: ")
+                filter_df=df_unit_types[df_unit_types['Unit Type'].str.contains(look_word)]
+                print("Report of units "+look_word+":")
+                print(filter_df)
+                look_option=input("Desea buscar una unidad:\nS/N\n")
+
+            exp_option=input("Desea generar un archivo en formato csv?\nS/N\n")
+            if (exp_option=="S"):
+                filter_df.to_csv('Unit_searched_report_units.csv')            
         
         elif number_of_tables>1:
             table_name=input("\nDigita el nombre de la tabla 1:")
             df=pd.read_csv(table_name)
             print("Información del dataframe: ")
             print(df.info())
-            df_unit_types=df[['Unit Type','IMEI','Company']]
+            df_unit_types=df[['Unit Type','IMEI','Company','Phone Number','Last Event Date']]
             #print("\nUnits en table 1:")
             #print(df_unit_types)
                         
@@ -32,7 +48,7 @@ class Tables_merger:
                 #TSO Peru - FG SATELITAL.csv
                 table_name=input("\nDigita el nombre de la tabla:")
                 df_aux=pd.read_csv(table_name)
-                df_aux_unit_types=df_aux[['Unit Type','IMEI','Company']]
+                df_aux_unit_types=df_aux[['Unit Type','IMEI','Company','Phone Number','Last Event Date']]
                 print("\nUnite types before concat:",df_unit_types.info())
                 print("\n")
                 df_unit_types=pd.concat([df_unit_types,df_aux_unit_types],axis=0)
