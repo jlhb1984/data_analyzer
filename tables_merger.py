@@ -60,4 +60,4 @@ class Tables_merger:
                 look_option=input("Desea buscar una unidad:\nS/N\n")
        exp_option=input("Desea generar un reporte en formato csv?\nS/N\n")
        if (exp_option=="S"):
-                filter_df.to_csv('Searched_unit_report_units.csv')  
+                filter_df.to_csv('Searched_unit_report.csv')  
