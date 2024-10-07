@@ -6,9 +6,9 @@ from units_report import Units_report
 from tables_merger import Tables_merger
 
 print("data_analyzer.")
-option=input("\n1. Data_analyzer01.\n2. Tables comparator.\n3. Units report. \n4. Merger. \n5. Salir. \n")
+option=input("\n1. Data_analyzer01.\n2. Tables comparator.\n3. Units report. \n4. Merger. \n5. Table_info. \n6. Salir. \n")
 
-while option!='5':
+while option!='6':
     
     if option=='1':
         number_plate=input("\nDigite la placa del vehículo en mayúscula: ")
@@ -49,9 +49,36 @@ while option!='5':
         #carga de las tablas a fusionar.
         number_of_tables=int(input("\nDigita el número de tablas: "))
         Tables_merger.merger(number_of_tables)
-        
+
     elif option=='5':
+        table_info=input("\nDigita el nombre de la tabla: ")
+        df_table_info=pd.read_csv(table_info)
+        missing_data_count=df_table_info.isna().sum()
+        print("\nDatos nulos: ")
+        print(missing_data_count)
+        print(df_table_info.info())
+        total_rows=len(df_table_info)
+        print("Total de registros: ")
+        print(total_rows)
+        count_can_ventas=0
+        count_IMEI_empty=0
+        
+        for i in range(0,total_rows):
+            #print(df_table_info.iloc[i]['Company'])
+            if df_table_info.iloc[i]['Company']=='**CANCELADO VENTAS':
+                count_can_ventas=count_can_ventas+1
+            #elif df_table_info.iloc[i]['IMEI']==None:
+            #    count_IMEI_empty=count_IMEI_empty+1       
+            
+        print("\nCompany=**CANCELADO VENTAS:")
+        print(count_can_ventas)
+        #print("\nIMEI=' '")
+        #print(count_IMEI_empty)
+        count_can_ventas=0
+        count_IMEI_empty=0
+        
+    elif option=='6':
         print("Saliendo")
         break
     
-    option=input("\n1. Data_analyzer01.\n2. Tables comparator.\n3. Units report. \n4. Merger. \n5. Salir. \n")
+    option=input("\n1. Data_analyzer01.\n2. Tables comparator.\n3. Units report. \n4. Merger. \n5. Table_info. \n6. Salir. \n")
