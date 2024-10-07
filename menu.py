@@ -56,26 +56,17 @@ while option!='6':
         missing_data_count=df_table_info.isna().sum()
         print("\nDatos nulos: ")
         print(missing_data_count)
+        print("\nInformacíón de la tabla: ")
         print(df_table_info.info())
         total_rows=len(df_table_info)
         print("Total de registros: ")
         print(total_rows)
-        count_can_ventas=0
-        count_IMEI_empty=0
-        
-        for i in range(0,total_rows):
-            #print(df_table_info.iloc[i]['Company'])
-            if df_table_info.iloc[i]['Company']=='**CANCELADO VENTAS':
-                count_can_ventas=count_can_ventas+1
-            #elif df_table_info.iloc[i]['IMEI']==None:
-            #    count_IMEI_empty=count_IMEI_empty+1       
-            
-        print("\nCompany=**CANCELADO VENTAS:")
-        print(count_can_ventas)
-        #print("\nIMEI=' '")
-        #print(count_IMEI_empty)
-        count_can_ventas=0
-        count_IMEI_empty=0
+        option_null=input("Desea elimianar los datos nulos de la tabla: S/N \n")
+        if option_null=="S":
+            df_table_info.dropna(axis=0,inplace=True)
+            print("df_table_info: ")
+            print(df_table_info.info())
+            print(df_table_info)   
         
     elif option=='6':
         print("Saliendo")
