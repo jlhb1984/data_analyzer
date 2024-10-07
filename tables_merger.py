@@ -16,6 +16,13 @@ class Tables_merger:
             df_unit_types=df[['Unit Type','IMEI','Company','Phone Number','Last Event Date','Dealer']]
             print(df_unit_types)
 
+            option_null=input("Desea elimianar los datos nulos de la tabla: S/N \n")
+            if option_null=="S":
+                df_unit_types.dropna(axis=0,inplace=True)
+                print("df_table_info: ")
+                print(df_unit_types.info())
+                print(df_unit_types) 
+
             Tables_merger.csv_reports(df_unit_types) 
         
         elif number_of_tables>1:
@@ -41,7 +48,14 @@ class Tables_merger:
                 df_unit_types=pd.concat([df_unit_types,df_aux_unit_types],axis=0)
                 print("\nUnite types after concat:")
                 print("\n")
-                print(df_unit_types.info()) 
+                print(df_unit_types.info())
+                
+            option_null=input("Desea elimianar los datos nulos de la tabla: S/N \n")
+            if option_null=="S":
+                df_unit_types.dropna(axis=0,inplace=True)
+                print("df_table_info: ")
+                print(df_unit_types.info())
+                print(df_unit_types) 
             
             Tables_merger.csv_reports(df_unit_types)           
 

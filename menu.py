@@ -4,6 +4,7 @@ from tables_comparator import Tables_comparator
 from data_analyzer import Data_analyzer
 from units_report import Units_report
 from tables_merger import Tables_merger
+from data_info import Data_info
 
 print("data_analyzer.")
 option=input("\n1. Data_analyzer01.\n2. Tables comparator.\n3. Units report. \n4. Merger. \n5. Table_info. \n6. Salir. \n")
@@ -52,22 +53,8 @@ while option!='6':
 
     elif option=='5':
         table_info=input("\nDigita el nombre de la tabla: ")
-        df_table_info=pd.read_csv(table_info)
-        missing_data_count=df_table_info.isna().sum()
-        print("\nDatos nulos: ")
-        print(missing_data_count)
-        print("\nInformacíón de la tabla: ")
-        print(df_table_info.info())
-        total_rows=len(df_table_info)
-        print("Total de registros: ")
-        print(total_rows)
-        option_null=input("Desea elimianar los datos nulos de la tabla: S/N \n")
-        if option_null=="S":
-            df_table_info.dropna(axis=0,inplace=True)
-            print("df_table_info: ")
-            print(df_table_info.info())
-            print(df_table_info)   
-        
+        Data_info.info(table_info)
+  
     elif option=='6':
         print("Saliendo")
         break
