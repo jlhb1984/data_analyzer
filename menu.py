@@ -7,9 +7,9 @@ from tables_merger import Tables_merger
 from data_info import Data_info
 
 print("data_analyzer.")
-option=input("\n1. Data_analyzer01.\n2. Tables comparator.\n3. Units report. \n4. Merger. \n5. Table_info. \n6. Salir. \n")
+option=input("\n1. Data_analyzer01.\n2. Tables comparator.\n3. Units report. \n4. Merger. \n5. Table_info. \n6. Messages. \n7. Salir. \n")
 
-while option!='6':
+while option!='7':
     
     if option=='1':
         number_plate=input("\nDigite la placa del vehículo en mayúscula: ")
@@ -54,9 +54,13 @@ while option!='6':
     elif option=='5':
         table_info=input("\nDigita el nombre de la tabla: ")
         Data_info.info(table_info)
-  
+    
     elif option=='6':
+        message=input("\nDigita la cadena: ")
+        print("\nLongitud de la cadena: ",len(message))        
+  
+    elif option=='7':
         print("Saliendo")
         break
     
-    option=input("\n1. Data_analyzer01.\n2. Tables comparator.\n3. Units report. \n4. Merger. \n5. Table_info. \n6. Salir. \n")
+    option=input("\n1. Data_analyzer01.\n2. Tables comparator.\n3. Units report. \n4. Merger. \n5. Table_info. \6. Messages. \n7. Salir. \n")
