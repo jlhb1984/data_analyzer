@@ -63,4 +63,4 @@ while option!='7':
         print("Saliendo")
         break
     
-    option=input("\n1. Data_analyzer01.\n2. Tables comparator.\n3. Units report. \n4. Merger. \n5. Table_info. \6. Messages. \n7. Salir. \n")
+    option=input("\n1. Data_analyzer01.\n2. Tables comparator.\n3. Units report. \n4. Merger. \n5. Table_info. \n6. Messages. \n7. Salir. \n")
