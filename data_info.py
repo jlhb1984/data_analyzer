@@ -41,9 +41,13 @@ class Data_info:
         option_drop=input("\nDeseas eliminar los registros que no cumplen la cantidad de caracteres requeridos: S/N \n")
         if option_drop=='S':            
             print(total_rows)
+            print(df_table_info.info()) 
+            df_table_info=df_table_info.drop(0)
+            """
             for i in range(0,total_rows):
                 if len(df_table_info.iloc[i]['Phone Number'])<number_of_chars_pn:
-                    df_table_info.drop(i)    
-        print(df_table_info.info())                 
+                    df_table_info=df_table_info.drop(0,axis=0)    
+            """
+            print(df_table_info.info())                 
         
                     
