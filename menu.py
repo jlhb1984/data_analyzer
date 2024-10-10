@@ -5,11 +5,12 @@ from data_analyzer import Data_analyzer
 from units_report import Units_report
 from tables_merger import Tables_merger
 from data_info import Data_info
+from date import Date
 
 print("data_analyzer.")
-option=input("\n1. Data_analyzer01.\n2. Tables comparator.\n3. Units report. \n4. Merger. \n5. Table_info. \n6. Messages. \n7. Salir. \n")
+option=input("\n1. Data_analyzer01.\n2. Tables comparator.\n3. Units report. \n4. Merger. \n5. Table_info. \n6. Messages. \n7. Str_date_order  \n8. Salir. \n")
 
-while option!='7':
+while option!='8':
     
     if option=='1':
         number_plate=input("\nDigite la placa del vehículo en mayúscula: ")
@@ -57,10 +58,14 @@ while option!='7':
     
     elif option=='6':
         message=input("\nDigita la cadena: ")
-        print("\nLongitud de la cadena: ",len(message))        
-  
+        print("\nLongitud de la cadena: ",len(message))
+
     elif option=='7':
+        table02=input("Digita el nombre de la tabla: ")
+        Date.order_date(table02)          
+  
+    elif option=='8':
         print("Saliendo")
         break
     
-    option=input("\n1. Data_analyzer01.\n2. Tables comparator.\n3. Units report. \n4. Merger. \n5. Table_info. \n6. Messages. \n7. Salir. \n")
+    option=input("\n1. Data_analyzer01.\n2. Tables comparator.\n3. Units report. \n4. Merger. \n5. Table_info. \n6. Messages. \n7. Str_date_order  \n8. Salir. \n")

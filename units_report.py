@@ -8,7 +8,8 @@ class Units_report:
     def create_report(table_name):
         df_books=pd.read_csv(table_name)
         df_books.head(2)
-        units=d=df_books[['Unit Type']]
-        units.drop_duplicates(inplace=True)
-        print(units)
-        units.to_csv('Units.csv',index=False)
+        df_books.info()
+        #var_filter=input("\nDigita el atributo a buscar: ")
+        df_book_filter01=df_books[['Unit','Owner','Assigned To']]
+        print(df_book_filter01)
+        #units.drop_duplicates(inplace=True)
