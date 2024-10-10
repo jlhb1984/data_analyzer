@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from units_report import Units_report
 
 class Tables_merger:
     
@@ -60,18 +61,19 @@ class Tables_merger:
             Tables_merger.csv_reports(df_unit_types)           
 
     def csv_reports(df):       
-       df_unit_types=df[['Unit Type','IMEI','Company','Phone Number','Last Event Date','Dealer']]
-       print(df_unit_types)
-       exp_option=input("Desea generar un reporte en formato csv?\nS/N\n")
-       if (exp_option=="S"):
-            df_unit_types.to_csv('Units_report_units.csv')
-       look_option=input("Desea buscar una unidad:\nS/N\n")
-       while look_option!='N':
-                look_word=input("Digita la unidad a buscar: ")
+        df_unit_types=df[['Unit Type','IMEI','Company','Phone Number','Last Event Date','Dealer']]
+        print(df_unit_types)
+        exp_option=input("Desea generar un reporte en formato csv?\nS/N\n")
+        if (exp_option=="S"):
+                df_unit_types.to_csv('Units_report_units.csv')        
+        look_option=input("Desea buscar una unidad:\nS/N\n")
+        while look_option!='N':
+                look_word=input("Digita la unidad a buscar en el campo Unit Type: ")
                 filter_df=df_unit_types[df_unit_types['Unit Type'].str.contains(look_word)]
                 print("Report of units "+look_word+":")
                 print(filter_df)
                 look_option=input("Desea buscar una unidad:\nS/N\n")
-       exp_option=input("Desea generar un reporte en formato csv?\nS/N\n")
-       if (exp_option=="S"):
+        exp_option=input("Desea generar un reporte en formato csv?\nS/N\n")
+        if (exp_option=="S"):
                 filter_df.to_csv('Searched_unit_report.csv')  
+        

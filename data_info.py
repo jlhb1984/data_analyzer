@@ -16,7 +16,7 @@ class Data_info:
         total_rows=len(df_table_info)
         print("\nTotal de registros: ")
         print(total_rows)
-        option_null=input("Deseas elimianar los datos nulos de la tabla: S/N \n")
+        option_null=input("Deseas eliminar los datos nulos de la tabla: S/N \n")
         if option_null=="S":
             df_table_info.dropna(axis=0,inplace=True)
             print("\ndf_table_info: ")
@@ -53,7 +53,12 @@ class Data_info:
             for i in range(0,total_rows):
                 if (len(str(df_table_info_aux.iloc[i]['IMEI'])))<number_of_chars_im:
                     df_table_info_aux_f=df_table_info_aux_f.drop(i)
+                print(df_table_info_aux_f.info())
+        elif option_drop=='N':
+            print("OK!")
+            
 
-        print(df_table_info_aux_f.info())                 
+
+                       
         
                     
