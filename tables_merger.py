@@ -51,7 +51,7 @@ class Tables_merger:
                 print("\n")
                 print(df_unit_types.info())
                 
-            option_null=input("Desea elimianar los datos nulos de la tabla: S/N \n")
+            option_null=input("Desea eliminar los datos nulos de la tabla: S/N \n")
             if option_null=="S":
                 df_unit_types.dropna(axis=0,inplace=True)
                 print("df_table_info: ")
