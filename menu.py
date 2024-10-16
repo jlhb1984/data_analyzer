@@ -20,27 +20,27 @@ while option!='8':
     elif option=='2':
         #Carga de la tabla 1. Landmarks InOut.csv
         table01=input("\nDigita el nombre de la tabla 1: ")
-        df_book_landmarks=pd.read_csv(table01)
-        df_book_landmarks.info()
+        df_book_table01=pd.read_csv(table01)
+        df_book_table01.info()
 
         #Carga de la tabla 2. Geofences InOut Report.csv
         table02=input("\nDigita el nombre de la tabla 2: ")
-        df_book_geofences=pd.read_csv(table02)
-        df_book_geofences.info()
+        df_book_table02=pd.read_csv(table02)
+        df_book_table02.info()
 
         #Carga de la columna de la tabla 1. ContactName
         table01_column=input("\nDigita el nombre de la columna de la tabla 1: ")
-        landmarks=df_book_landmarks.loc[:,table01_column]
-        landmarks.info()
-        print(landmarks)
+        atribute_table01=df_book_table01.loc[:,table01_column]
+        atribute_table01.info()
+        print(atribute_table01)
 
         #Carga de la columna de la tabla 1. GeofenceName
         table02_column=input("\nDigita el nombre de la columna de la tabla 2: ")
-        geofences=df_book_geofences.loc[:,table02_column]
-        geofences.info()
-        print(geofences)
+        atribute_table02=df_book_table02.loc[:,table02_column]
+        atribute_table01.info()
+        print(atribute_table02)
 
-        Tables_comparator.comparator(landmarks,geofences)
+        Tables_comparator.comparator(atribute_table01,atribute_table02)
 
     elif option=='3':
         #Carga de la tabla. Customer-Units.csv
