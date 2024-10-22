@@ -2,25 +2,34 @@ import pandas as pd
 import numpy as np
 
 class Tables_comparator:
-    def __init__(self,atribute_table01,atribute_table02,df_book_table02):
-        self.atribute_table01=atribute_table01        
-        self.atribute_table02=atribute_table02
+    def __init__(self,df_book_table01,df_book_table02):
+        self.df_book_table01=df_book_table01
         self.df_book_table02=df_book_table02
              
-    def comparator(atribute_table01,atribute_table02,df_book_table02):
-        atribute_table01.drop_duplicates(inplace=True)
-        atribute_table02.drop_duplicates(inplace=True)
-        total_atribute01=atribute_table01.count()
-        total_atribute02=atribute_table02.count()
-        print(df_book_table02.info())
-        print("Total atribute_table01: ",total_atribute01)
-        print("Total atribute_table02: ",total_atribute02)
-        print("Buscando campos iguales en tabla1 y tabla 2...")
-        df_book_aux=pd.DataFrame()
-        j_aux=0
-        for i in range(0,total_atribute01):
-            for j in range(0,total_atribute02):
-                if atribute_table01.iloc[i]==atribute_table02.iloc[j]:
-                    print(df_book_table02.iloc[j])                   
+    def comparator(df_book_table01,df_book_table02):
+        num_filas_table01=int(df_book_table01.shape[0])
+        num_filas_table02=int(df_book_table02.shape[0])
 
+        print("Trabajando...")
+        cont=0
+        df_aux=pd.DataFrame()
+        lista_simcard=[]
+        lista_linea=[]
+                  
+        for i in range(0,num_filas_table01):
+            for j in range(0,num_filas_table02):                
+                if df_book_table01.iloc[i,0]==df_book_table02.iloc[j,5]:                   
+                    lista_simcard.append(df_book_table02.iloc[j,5])
+                    lista_linea.append(df_book_table02.iloc[j,3])
+                    cont=cont+1
+        df_aux['SIMCARD']=lista_simcard
+        df_aux['LINEA']=lista_linea
+        print("Cont= ",cont)
+        print(df_aux.info())
+        option_exp=input("\n¿Desea generar un reporte en formato csv S/N?\n")
+        if option_exp=="S":
+            df_aux.to_csv('tables_comparator.csv')
+        #lista_combinada=[lista_simcard,lista_linea]
+       
+              
                     
