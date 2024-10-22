@@ -8,9 +8,9 @@ from data_info import Data_info
 from date import Date
 
 print("data_analyzer.")
-option=input("\n1. Data_analyzer01.\n2. Tables comparator.\n3. Units report. \n4. Merger. \n5. Table_info. \n6. Messages. \n7. Str_date_order  \n8. Salir. \n")
+option=input("\n1. Data_analyzer01.\n2. Tables comparator.\n3. Units report. \n4. Merger. \n5. Table_info. \n6. Messages. \n7. Str_date_order. \n8. Puerto serial.  \n9. Salir. \n")
 
-while option!='8':
+while option!='9':
     
     if option=='1':
         number_plate=input("\nDigite la placa del vehículo en mayúscula: ")
@@ -37,10 +37,11 @@ while option!='8':
         #Carga de la columna de la tabla 1. GeofenceName
         table02_column=input("\nDigita el nombre de la columna de la tabla 2: ")
         atribute_table02=df_book_table02.loc[:,table02_column]
-        atribute_table01.info()
+        atribute_table02.info()
         print(atribute_table02)
 
-        Tables_comparator.comparator(atribute_table01,atribute_table02)
+        #Tables_comparator.comparator(atribute_table01,atribute_table02)
+        Tables_comparator.comparator(atribute_table01,atribute_table02,df_book_table02)
 
     elif option=='3':
         #Carga de la tabla. Customer-Units.csv
@@ -62,10 +63,13 @@ while option!='8':
 
     elif option=='7':
         table02=input("Digita el nombre de la tabla: ")
-        Date.order_date(table02)          
-  
+        Date.order_date(table02)
+
     elif option=='8':
+        print()          
+  
+    elif option=='9':
         print("Saliendo")
         break
     
-    option=input("\n1. Data_analyzer01.\n2. Tables comparator.\n3. Units report. \n4. Merger. \n5. Table_info. \n6. Messages. \n7. Str_date_order  \n8. Salir. \n")
+    option=input("\n1. Data_analyzer01.\n2. Tables comparator.\n3. Units report. \n4. Merger. \n5. Table_info. \n6. Messages. \n7. Str_date_order. \n8. Puerto serial. \n9. Salir. \n")

@@ -11,10 +11,10 @@ class Units_report:
         df_books.info()
         var_filter=input("\nDigita el atributo a buscar: ")
         #En la siguiente línea se puefe agregar los atributos a visualizar, si es uno, no modificar el código.
-        df_book_filter01=df_books[['Date',var_filter]]
+        df_book_filter01=df_books[[var_filter,'Event','Time','GPS Fixed','GPS Age']]
         print(df_book_filter01) 
         print(df_book_filter01[var_filter].value_counts())
-        df_book_filter01.dropna(axis=0,inplace=True)
+        #df_book_filter01.dropna(axis=0,inplace=True)
         Units_report.look_for(df_book_filter01,var_filter)
 
 

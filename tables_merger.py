@@ -10,14 +10,14 @@ class Tables_merger:
     def merger(number_of_tables):       
                
         if number_of_tables==1:
-            table_name=input("\nDigita el nombre de la tabla 1:")
+            table_name=input("\nDigita el nombre de la tabla 1: ")
             df=pd.read_csv(table_name)
             print("Información del dataframe: ")
             print(df.info())         
-            df_unit_types=df[['Unit Type','IMEI','Company','Phone Number','Last Event Date','Dealer']]
+            df_unit_types=df[['Unit','Events','Date','Latitude','Longitude']]
             print(df_unit_types)
 
-            option_null=input("Desea elimianar los datos nulos de la tabla: S/N \n")
+            option_null=input("Desea eliminar los datos nulos de la tabla: S/N \n")
             if option_null=="S":
                 df_unit_types.dropna(axis=0,inplace=True)
                 print("df_table_info: ")
@@ -27,11 +27,11 @@ class Tables_merger:
             Tables_merger.csv_reports(df_unit_types) 
         
         elif number_of_tables>1:
-            table_name=input("\nDigita el nombre de la tabla 1:")
+            table_name=input("\nDigita el nombre de la tabla 1: ")
             df=pd.read_csv(table_name)
             print("Información del dataframe: ")
             print(df.info())
-            df_unit_types=df[['Unit Type','IMEI','Company','Phone Number','Last Event Date','Dealer']]
+            df_unit_types=df[['Unit','Event','Time','GPS Fixed','GPS Age']]
                                     
             for i in range(1,number_of_tables):
                 #UTS Sistemas Kalo MX.csv
@@ -40,9 +40,9 @@ class Tables_merger:
                 #TSO Mobile - Colombia.csv
                 #TSO Mobile - Peru.csv
                 #TSO Peru - FG SATELITAL.csv
-                table_name=input("\nDigita el nombre de la tabla:")
+                table_name=input("\nDigita el nombre de la tabla: ")
                 df_aux=pd.read_csv(table_name)
-                df_aux_unit_types=df_aux[['Unit Type','IMEI','Company','Phone Number','Last Event Date','Dealer']]
+                df_aux_unit_types=df_aux[['Unit','Event','Time','GPS Fixed','GPS Age']]
                 print("\nUnite types before concat:")
                 print("\n")
                 print(df_unit_types.info())                
@@ -61,15 +61,15 @@ class Tables_merger:
             Tables_merger.csv_reports(df_unit_types)           
 
     def csv_reports(df):       
-        df_unit_types=df[['Unit Type','IMEI','Company','Phone Number','Last Event Date','Dealer']]
+        df_unit_types=df[['Unit','Event','Time','GPS Fixed','GPS Age']]
         print(df_unit_types)
         exp_option=input("Desea generar un reporte en formato csv?\nS/N\n")
         if (exp_option=="S"):
-                df_unit_types.to_csv('Units_report_units.csv')        
+                df_unit_types.to_csv('Units_report.csv')        
         look_option=input("Desea buscar una unidad:\nS/N\n")
         while look_option!='N':
-                look_word=input("Digita la unidad a buscar en el campo Unit Type: ")
-                filter_df=df_unit_types[df_unit_types['Unit Type'].str.contains(look_word)]
+                look_word=input("Digita la unidad a buscar en el campo Unit: ")
+                filter_df=df_unit_types[df_unit_types['Unit'].str.contains(look_word)]
                 print("Report of units "+look_word+":")
                 print(filter_df)
                 look_option=input("Desea buscar una unidad:\nS/N\n")
